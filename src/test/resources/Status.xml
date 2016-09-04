@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<status id="1"	severity="Assigned" />
+	<status id="2"	severity="Pending" />
+	<status id="3"	severity="Resolved" />
+</dataset>
