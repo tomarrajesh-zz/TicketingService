@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-	<severity id="3"	severity="low" />
-	<severity id="2"	severity="medium" />
-	<severity id="1"	severity="high" />
+	<severity severity_id="1"	severity="high" />
+	<severity severity_id="2"	severity="medium" />
+	<severity severity_id="3"	severity="low" />
 </dataset>

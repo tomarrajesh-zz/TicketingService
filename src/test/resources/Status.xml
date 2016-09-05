@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-	<status id="1"	status="Assigned" />
-	<status id="2"	status="Pending" />
-	<status id="3"	status="Resolved" />
+	<status status_id="1"	status="Assigned" />
+	<status status_id="2"	status="Pending" />
+	<status status_id="3"	status="Resolved" />
 </dataset>

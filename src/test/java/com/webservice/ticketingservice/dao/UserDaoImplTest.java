@@ -51,10 +51,11 @@ public class UserDaoImplTest extends EntityDaoImplTest {
 	}
 	
 	@Test
-	public void getUserByNameTest() {
+	public void getUserByHandleTest() {
 		User user = getSampleUser();
 		userDao.createUser(user);
-		Assert.assertEquals(userDao.getUserByName(user.getName()), user);
+		
+		Assert.assertEquals(userDao.getUserByHandle(user.getHandle()), user);
 	}
 	
 	@Test
@@ -66,6 +67,7 @@ public class UserDaoImplTest extends EntityDaoImplTest {
 		User user = new User();
 		user.setName("Arvind");
 		user.setTitle("CEO");
+		user.setHandle("arvind.2389");
 		return user;
 	}
 

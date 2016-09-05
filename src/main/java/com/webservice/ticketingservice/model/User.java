@@ -1,10 +1,13 @@
 package com.webservice.ticketingservice.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.EqualsAndHashCode;
@@ -18,18 +21,28 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode
-@ToString
+@ToString(exclude = {"requestedTickets", "assignedTickets"})
 @Entity
 @Table(name="USER")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "USER_ID")
 	private int id;
+	
+	@Column(name = "HANDLE", unique = true, nullable = false)
+	private String handle;
 	
 	@Column(name = "NAME", nullable = false)
 	private String name;
 	
 	@Column(name = "TITLE", nullable = false)
 	private String title;
+	
+	@OneToMany(mappedBy = "requester")
+	private List<Ticket> requestedTickets;
+	
+	@OneToMany(mappedBy = "assignee")
+	private List<Ticket> assignedTickets;
 }

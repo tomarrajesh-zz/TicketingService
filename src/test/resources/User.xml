@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-	<user id="1"	name="Rajesh"	title="SDE"	/>
-	<user id="2"	name="Yogesh"	title="SDM"	/>
+	<user user_id="1"	handle="raj.sh"		name="Rajesh"	title="SDE"	/>
+	<user user_id="2"	handle="centre"		name="Yogesh"	title="SDM"	/>
 </dataset>

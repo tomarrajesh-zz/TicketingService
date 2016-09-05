@@ -10,7 +10,7 @@ public interface UserDao {
 	
 	void updateUser(User user);
 	
-	User getUserByName(String name);
+	User getUserByHandle(String name);
 	
 	User getUserById(int id);
 	

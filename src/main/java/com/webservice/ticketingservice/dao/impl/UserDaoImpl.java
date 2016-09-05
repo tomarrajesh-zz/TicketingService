@@ -24,9 +24,9 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 	}
 
 	@Override
-	public User getUserByName(String name) {
+	public User getUserByHandle(String handle) {
 		Criteria criteria = createEntityCriteria();
-		criteria.add(Restrictions.eq("name", name));
+		criteria.add(Restrictions.eq("handle", handle));
 		return (User) criteria.uniqueResult();
 	}
 
