@@ -23,13 +23,6 @@ public class TicketDaoImplTest extends EntityDaoImplTest {
 	@Autowired
 	UserDao userDao;
 	
-//	@Override
-//	protected IDataSet getDataSet() throws Exception {
-//		IDataSet dataSet = new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("Ticket.xml"));
-//		return dataSet;
-//	}
-	
-	//In case you need multiple datasets (mapping different tables) and you do prefer to keep them in separate XML's
 	@Override
 	protected IDataSet getDataSet() throws Exception {
 	  IDataSet[] datasets = new IDataSet[] {

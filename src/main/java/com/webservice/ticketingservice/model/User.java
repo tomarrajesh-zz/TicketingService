@@ -20,7 +20,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "id")
 @ToString(exclude = {"requestedTickets", "assignedTickets"})
 @Entity
 @Table(name="USER")

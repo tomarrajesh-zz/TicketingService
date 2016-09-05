@@ -1,13 +1,12 @@
 package com.webservice.ticketingservice.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.EqualsAndHashCode;
@@ -20,19 +19,25 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-@ToString(exclude = "tickets")
+@ToString(exclude = "content")
 @Entity
-@Table(name="STATUS")
-public class Status {
+@Table(name="CORRESPONDENCE")
+public class Correspondence {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "STATUS_ID")
+	@Column(name = "CORRESPONDENCE_ID")
 	private int id;
 	
-	@Column(name = "STATUS", nullable = false)
-	private String status;
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "TICKET_ID")
+	private Ticket ticket;
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "USER_ID")
+	private User correspondent;
 	
-	@OneToMany(mappedBy = "status")
-	private List<Ticket> tickets;
+	@Column(name = "CONTENT", nullable = false)
+	private String content;
+	//private byte[] correspondence;
 }

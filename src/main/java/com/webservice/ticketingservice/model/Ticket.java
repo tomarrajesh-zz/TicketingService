@@ -18,8 +18,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode
-@ToString
+@EqualsAndHashCode(of = "id")
+@ToString(exclude = "description")
 @Entity
 @Table(name="TICKET")
 public class Ticket {
