@@ -1,5 +1,7 @@
 package com.webservice.ticketingservice.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,4 +42,10 @@ public class Correspondence {
 	@Column(name = "CONTENT", nullable = false)
 	private String content;
 	//private byte[] correspondence;
+	
+	@Column(name = "CREATION_DATE", nullable = true)
+	private Date creationDate;
+	
+	@Column(name = "LAST_UPDATED_DATE", nullable = true)
+	private Date lastUpdatedDate;
 }

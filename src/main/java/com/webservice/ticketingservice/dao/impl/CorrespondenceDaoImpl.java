@@ -3,6 +3,7 @@ package com.webservice.ticketingservice.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -24,6 +25,7 @@ public class CorrespondenceDaoImpl extends AbstractDao<Integer, Correspondence> 
 	public List<Correspondence> getCorrespondencesForTicket(Ticket ticket) {
 		Criteria criteria = createEntityCriteria();
 		criteria.add(Restrictions.eq("ticket.id", ticket.getId()));
+		criteria.addOrder(Order.asc("creationDate"));
 		return criteria.list();
 	}
 	

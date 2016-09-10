@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,6 +34,6 @@ public class Severity {
 	@Column(name = "SEVERITY", nullable = false)
 	private String severity;
 	
-	@OneToMany(mappedBy = "severity")
+	@OneToMany(mappedBy = "severity", fetch = FetchType.LAZY)
 	private List<Ticket> tickets;
 }

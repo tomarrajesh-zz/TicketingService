@@ -1,5 +1,6 @@
 package com.webservice.ticketingservice.dao;
 
+import org.dbunit.dataset.CompositeDataSet;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSet;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,16 +16,22 @@ public class UserDaoImplTest extends EntityDaoImplTest {
 	@Autowired
 	UserDao userDao;
 	
-	@Override
-	protected IDataSet getDataSet() throws Exception {
-		IDataSet dataSet = new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("User.xml"));
-		return dataSet;
-	}
+//	@Override
+//	protected IDataSet getDataSet() throws Exception {
+//	  IDataSet[] datasets = new IDataSet[] {
+//			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("Status.xml")),
+//			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("Severity.xml")),
+//			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("User.xml")),
+//			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("Ticket.xml")),
+//			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("Correspondence.xml"))
+//	  };
+//	  return new CompositeDataSet(datasets);
+//	}
 	
 	@Test
 	public void createUserTest() {
 		userDao.createUser(getSampleUser());
-		Assert.assertEquals(userDao.getUsers().size(), 3);
+		Assert.assertEquals(userDao.getUsers().size(), 4);
 	}
 	
 	@Test
@@ -33,7 +40,7 @@ public class UserDaoImplTest extends EntityDaoImplTest {
 		userDao.createUser(user);
 		user.setName("New Arvind");
 		userDao.updateUser(user);
-		Assert.assertEquals(userDao.getUsers().size(), 3);
+		Assert.assertEquals(userDao.getUsers().size(), 4);
 	}
 	
 	@Test
@@ -60,7 +67,7 @@ public class UserDaoImplTest extends EntityDaoImplTest {
 	
 	@Test
 	public void getUsersTest() {
-		Assert.assertEquals(userDao.getUsers().size(), 2);
+		Assert.assertEquals(userDao.getUsers().size(), 3);
 	}
 	
 	private User getSampleUser() {

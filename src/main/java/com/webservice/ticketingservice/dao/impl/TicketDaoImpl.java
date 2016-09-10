@@ -1,8 +1,10 @@
 package com.webservice.ticketingservice.dao.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -44,31 +46,42 @@ public class TicketDaoImpl extends AbstractDao<Integer, Ticket> implements Ticke
 		Criteria criteria = createEntityCriteria();
 		return (List<Ticket>) criteria.list();
 	}
+	
 	@Override
-	public List<Ticket> getTicketsPaginatedAndFiltered(Integer id, String title, Status status, Severity severity,
-			User requester, User assignee) {
+	public List<Ticket> getTicketsPaginatedAndFiltered(Integer id, Integer statusId, Integer severityId,
+			Integer requesterId, Integer assigneeId, Date creationDate, Date lastUpdatedDate, Integer pageNumber,
+			Integer pageSize) {
+		// TODO Auto-generated method stub
 		Criteria criteria = createEntityCriteria();
-		
 		if(id != null)	{
 			criteria.add(Restrictions.eq("id", id));
 		}
-		if(title != null) {
-			criteria.add(Restrictions.eq("title", title));
+		
+		if(statusId != null) {
+			criteria.add(Restrictions.eq("status.id", statusId));
 		}
-		if(status != null) {
-			criteria.add(Restrictions.eq("status.id", status.getId()));
+		if(severityId != null) {
+			criteria.add(Restrictions.eq("severity.id", severityId));
 		}
-		if(severity != null) {
-			criteria.add(Restrictions.eq("severity.id", severity.getId()));
+		if(requesterId != null) {
+			criteria.add(Restrictions.eq("requester.id", requesterId));
 		}
-		if(requester != null) {
-			criteria.add(Restrictions.eq("requester.id", requester.getId()));
+		if(assigneeId != null) {
+			criteria.add(Restrictions.eq("assignee.id", assigneeId));
 		}
-		if(assignee != null) {
-			criteria.add(Restrictions.eq("assignee.id", assignee.getId()));
+		if(creationDate != null) {
+			criteria.add(Restrictions.ge("creationDate", creationDate));
 		}
+		if(lastUpdatedDate != null) {
+			criteria.add(Restrictions.le("lastUpdatedDate", lastUpdatedDate));
+		}
+		if(pageNumber != null && pageSize != null) {
+			criteria.setFirstResult(pageNumber).setMaxResults(pageSize);	
+		}
+		
+		criteria.addOrder(Order.asc("creationDate"));
 		List<Ticket> tickets = criteria.list(); 
-		return tickets; 
+		return tickets;
 	}
 
 	

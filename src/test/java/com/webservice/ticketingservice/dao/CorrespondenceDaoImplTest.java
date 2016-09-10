@@ -17,17 +17,17 @@ public class CorrespondenceDaoImplTest extends EntityDaoImplTest {
 	
 	@Autowired UserDao userDao;
 	
-	@Override
-	protected IDataSet getDataSet() throws Exception {
-	  IDataSet[] datasets = new IDataSet[] {
-			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("Status.xml")),
-			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("Severity.xml")),
-			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("User.xml")),
-			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("Ticket.xml")),
-			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("Correspondence.xml"))
-	  };
-	  return new CompositeDataSet(datasets);
-	}
+//	@Override
+//	protected IDataSet getDataSet() throws Exception {
+//	  IDataSet[] datasets = new IDataSet[] {
+//			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("Status.xml")),
+//			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("Severity.xml")),
+//			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("User.xml")),
+//			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("Ticket.xml")),
+//			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("Correspondence.xml"))
+//	  };
+//	  return new CompositeDataSet(datasets);
+//	}
 	
 	@Test
 	public void createCorrespondenceTest() {
