@@ -1,3 +1,4 @@
+
 package com.webservice.ticketingservice.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -6,7 +7,7 @@ public class TicketingServiceInitializer extends AbstractAnnotationConfigDispatc
   
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] { TickeingServiceConfiguration.class };
+        return new Class[] { TicketingServiceConfiguration.class };
     }
    
     @Override

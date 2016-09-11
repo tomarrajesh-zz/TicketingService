@@ -6,7 +6,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
+//@EnableAspectJAutoProxy
 @ComponentScan(basePackages = "com.webservice.ticketingservice")
-public class TickeingServiceConfiguration {
+public class TicketingServiceConfiguration {
 
 }
