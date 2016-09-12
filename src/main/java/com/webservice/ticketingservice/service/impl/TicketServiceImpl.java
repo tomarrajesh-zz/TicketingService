@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.webservice.ticketingservice.aop.Auditable;
+import com.webservice.ticketingservice.aop.EventType;
 import com.webservice.ticketingservice.dao.TicketDao;
 import com.webservice.ticketingservice.model.Ticket;
 import com.webservice.ticketingservice.service.TicketService;
 
 @Service("ticketService")
-@Transactional
 public class TicketServiceImpl implements TicketService {
 
 	@Autowired TicketDao ticketDao;
@@ -23,6 +24,7 @@ public class TicketServiceImpl implements TicketService {
 	}
 
 	@Override
+	@Auditable(eventType = EventType.TicketCreated)
 	public void createTicket(Ticket ticket) {
 		ticketDao.createTicket(ticket);
 	}

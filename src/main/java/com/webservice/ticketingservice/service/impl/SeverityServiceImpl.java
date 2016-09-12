@@ -12,7 +12,6 @@ import com.webservice.ticketingservice.model.Severity;
 import com.webservice.ticketingservice.service.SeverityService;
 
 @Service("severityService")
-@Transactional
 public class SeverityServiceImpl implements SeverityService {
 
 	@Autowired SeverityDao severityDao;

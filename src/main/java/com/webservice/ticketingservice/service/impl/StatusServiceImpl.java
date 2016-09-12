@@ -12,7 +12,6 @@ import com.webservice.ticketingservice.model.Status;
 import com.webservice.ticketingservice.service.StatusService;
 
 @Service("statusService")
-@Transactional
 public class StatusServiceImpl implements StatusService {
 
 	@Autowired StatusDao statusDao;

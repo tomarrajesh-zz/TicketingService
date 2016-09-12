@@ -2,6 +2,8 @@ package com.webservice.ticketingservice.service.impl;
 
 import java.util.List;
 
+import com.webservice.ticketingservice.aop.Auditable;
+import com.webservice.ticketingservice.aop.EventType;
 import com.webservice.ticketingservice.dao.CorrespondenceDao;
 import com.webservice.ticketingservice.model.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ public class CorrespondenceServiceImpl implements CorrespondenceService {
 	
 	@Autowired CorrespondenceDao correspondenceDao;
 	
+	@Auditable(eventType = EventType.CorrespondenceAdded)
 	public void addComment(Correspondence correspondence) {
 		correspondenceDao.createCorrespondence(correspondence);
 	}

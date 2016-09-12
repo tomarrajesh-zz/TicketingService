@@ -9,7 +9,6 @@ import com.webservice.ticketingservice.model.User;
 import com.webservice.ticketingservice.service.UserService;
 
 @Service("userService")
-@Transactional
 public class UserServiceImpl implements UserService {
 
 	@Autowired UserDao userDao;
