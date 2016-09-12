@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<activity activity_id="1"	ticket_id="1" 	event="TicketCreated" 	description="dummy activity" />
+</dataset>
