@@ -36,8 +36,6 @@ class AuditableAspect {
 		case CorrespondenceAdded:
 			doAudit = addCorrespondenceHandler;
 			break;
-		case CorrespondenceAskedFor:
-			break;
 		case TicketCreated:
 			doAudit = ticketCreationAuditer;
 			break;

@@ -3,7 +3,6 @@ package com.webservice.ticketingservice.api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,12 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import com.webservice.ticketingservice.aop.Auditable;
 import com.webservice.ticketingservice.aop.EventType;
 import com.webservice.ticketingservice.iotypes.Activities;
-import com.webservice.ticketingservice.iotypes.Activity;
 import com.webservice.ticketingservice.iotypes.Correspondences;
 import com.webservice.ticketingservice.iotypes.CreateTicketRequest;
 import com.webservice.ticketingservice.iotypes.SearchTicketsRequest;
@@ -64,6 +61,8 @@ public class ServiceController {
 				HttpStatus.OK);
 	}
 
+	/*------------------------------------  SEARCH TICKETS ------------------------------------*/
+	
 	@RequestMapping(value = "/ticket/search", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<SearchTicketsResponse> searchTickets(@RequestBody SearchTicketsRequest searchRequest) {
 		//TODO: validate input
@@ -75,7 +74,6 @@ public class ServiceController {
 	}
 
 	/*------------------------------------  CREATE TICKET ------------------------------------*/
-
 	
 	@RequestMapping(value = "/ticket/new", method = RequestMethod.POST)
 	public ResponseEntity<Integer> createTicket(@RequestBody CreateTicketRequest ticketRequest) {
@@ -88,6 +86,7 @@ public class ServiceController {
 	}
 
 	/*------------------------------------  UPDATE TICKET ------------------------------------*/
+	
 	@Auditable(eventType = EventType.TicketUpdated)
 	@RequestMapping(value = "/ticket/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<com.webservice.ticketingservice.iotypes.Ticket> updateTicket(@PathVariable("id") int ticketId,
@@ -116,7 +115,6 @@ public class ServiceController {
 	/*------------------------------------  GET CORRESPONDENCES ------------------------------------*/
 
 	@RequestMapping(value = "/ticket/{id}/correspondences", method = RequestMethod.GET)
-	@Auditable(eventType = EventType.CorrespondenceAskedFor)
 	public ResponseEntity<Correspondences> getCorrespondences(@PathVariable("id") int ticketId) {
 		// TODO: validate input
 		Ticket ticket = ticketService.getTicket(ticketId);
@@ -131,6 +129,7 @@ public class ServiceController {
 	}
 
 	/*------------------------------------  ADD CORRESPONDENCE ------------------------------------*/
+	
 	@RequestMapping(value = "/ticket/{id}", method = RequestMethod.POST)
 	public ResponseEntity<Void> addCorrespondence(@PathVariable("id") int ticketId,
 			@RequestBody com.webservice.ticketingservice.iotypes.Correspondence correspondence) {
@@ -152,6 +151,8 @@ public class ServiceController {
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
 
+	/*------------------------------------  GET ACTIVITIES ------------------------------------*/
+	
 	@RequestMapping(value = "/ticket/{id}/activity", method = RequestMethod.GET)
 	public ResponseEntity<Activities> getActivities(@PathVariable("id") int ticketId) {
 		// TODO: validate input
