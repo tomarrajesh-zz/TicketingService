@@ -1,14 +1,11 @@
 package com.webservice.ticketingservice.dao;
 
-import java.sql.SQLException;
-
 import javax.sql.DataSource;
 
 import org.dbunit.database.DatabaseDataSourceConnection;
 import org.dbunit.database.DatabaseSequenceFilter;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.CompositeDataSet;
-import org.dbunit.dataset.DataSetException;
 import org.dbunit.dataset.FilteredDataSet;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.filter.ITableFilter;
@@ -43,7 +40,8 @@ public abstract class EntityDaoImplTest extends AbstractTransactionalTestNGSprin
 			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("Severity.xml")),
 			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("User.xml")),
 			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("Ticket.xml")),
-			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("Correspondence.xml"))
+			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("Correspondence.xml")),
+			  new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("Activity.xml"))
 	  };
 	  return new CompositeDataSet(datasets);
 	}
